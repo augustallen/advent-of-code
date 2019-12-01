@@ -1,4 +1,3 @@
-# solutions dsasadfdsa
 import math
 
 f = open("day1_module_mass.txt","r")
