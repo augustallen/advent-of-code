@@ -13,7 +13,7 @@ print("Answer to Part 1: " + str(total_fuel_required))
 
 f.close()
 
-# Re-open file to re-iterate through the ffor loop, this time accounting for mass of fuel.
+# Re-open file to re-iterate through the for loop, this time accounting for mass of fuel.
 f = open(file_path,"r")
 
 total_fuel_required = 0
