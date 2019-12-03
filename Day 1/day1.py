@@ -1,7 +1,7 @@
 import math
 
 # File provided at: https://adventofcode.com/2019/day/1
-file_path="Day 1\day1_module_mass.txt"
+file_path=r"Day 1\day1_module_mass.txt"
 
 f = open(file_path,"r")
 total_fuel_required = 0
