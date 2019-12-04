@@ -1,5 +1,3 @@
-import re
-
 with open(r"Day 3/input.txt","r") as f:
     values = f.read().split("\n")
 
@@ -37,20 +35,31 @@ def wire_movements(positions):
 wire1_positions = wire_movements(wire1)
 wire2_positions = wire_movements(wire2)
 
-cross_positions=[]
+print("starting cross_position identification")
 
+# This is for part 1 (takes 21 minutes to run)
+cross_positions=[]
 for p1 in wire1_positions:
     for p2 in wire2_positions:       
         if p1 == p2:
             cross_positions.append(p1)
-print(cross_positions)
 
-print(type(cross_positions))
+min_man=1000000000000 #dummy value defintion
+
 for i in cross_positions:
-    x=abs(i[0])
-    y=abs(i[1])
-    print(x+y)
+    x = i[0]
+    y = i[1]
+    manhattan = abs(x) + abs(y)
+    if manhattan<min_man:
+        shortest_cross = [x,y]
+        min_man = manhattan
+print("Answer to part 1: " + str(min_man) + " which is found at point " + str(shortest_cross))
+
+first_cross = cross_positions[0]
+
+min_steps_wire1 = wire1_positions.index(first_cross)
+min_steps_wire2 = wire2_positions.index(first_cross)
+min_steps = min_steps_wire1 + min_steps_wire2 + 2 # Adding two to account for 0-index
 
 
-
-    
+print("Answer to part 2: " + str(min_steps) + " which is found at point " + str(first_cross))
