@@ -7,30 +7,50 @@ wire1 = values[0].split(",")
 wire2 = values[1].split(",")
 
 def wire_movements(positions):
-    wire_x_y = [0,0]
+    x_position=0
+    y_position=0
     wire_positions = []
     for value in positions:
         if value[0] == "R":
-            wire_x_y[0] += int(value[1:])
+            for i in range(int(value[1:])):
+                x_position += 1
+                wire_x_y = [x_position,y_position]
+                wire_positions.append(wire_x_y[:])
         if value[0] == "L":
-            wire_x_y[0] -= int(value[1:])
+            for i in range(int(value[1:])):
+                x_position -= 1
+                wire_x_y = [x_position,y_position]
+                wire_positions.append(wire_x_y[:])
         if value[0] == "U":
-            wire_x_y[1] += int(value[1:])
+            for i in range(int(value[1:])):
+                y_position += 1
+                wire_x_y = [x_position,y_position]
+                wire_positions.append(wire_x_y[:])
         if value[0] == "D":
-            wire_x_y[1] -= int(value[1:])
-        wire_positions.append(wire_x_y[:])
+            for i in range(int(value[1:])):
+                y_position -= 1
+                wire_x_y = [x_position,y_position]
+                wire_positions.append(wire_x_y[:])
     return wire_positions
 
 
 wire1_positions = wire_movements(wire1)
 wire2_positions = wire_movements(wire2)
-print(wire1_positions)
-print(wire2_positions)
 
+cross_positions=[]
 
 for p1 in wire1_positions:
     for p2 in wire2_positions:       
         if p1 == p2:
-            print("Wires cross at: " + p1 + " " + p2) 
-        
+            cross_positions.append(p1)
+print(cross_positions)
+
+print(type(cross_positions))
+for i in cross_positions:
+    x=abs(i[0])
+    y=abs(i[1])
+    print(x+y)
+
+
+
     
