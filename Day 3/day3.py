@@ -31,8 +31,14 @@ def wire_movements(positions):
                 wire_positions.append(wire_x_y[:])
     return wire_positions
 
+
+wire1_positions = wire_movements(wire1)
+wire2_positions = wire_movements(wire2)
+
+print("starting cross_position identification")
+
 # Method is incredibly slow (takes ~20 minutes to run, intersection of sets would be much faster but wouldn't store positions for part 2)
-ross_positions=[]
+cross_positions=[]
 for p1 in wire1_positions:
     for p2 in wire2_positions:       
         if p1 == p2:
