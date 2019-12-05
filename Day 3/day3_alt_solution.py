@@ -74,4 +74,4 @@ def part2(data):
 
     return pad[result] + pbd[result]
 
-print(part1(data))
+print(part2(data))
