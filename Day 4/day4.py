@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-# It is a six-digit number. Implicit in my range which all have six digits but useful for other ranges.
+# See if updates It is a six-digit number. Implicit in my range which all have six digits but useful for other ranges.
 
 def length_six(number):
     if (len(str(number))) == 6:
