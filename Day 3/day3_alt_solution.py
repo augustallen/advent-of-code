@@ -1,6 +1,6 @@
 # Alternative, and much faster, solution from: # https://www.reddit.com/r/adventofcode/comments/e5bz2w/2019_day_3_solutions/f9lx87q/
 
-with open("Day 3/input.txt", "r") as f:
+with open("Day 3/andrea_input.txt", "r") as f:
     data = f.read().rstrip()
 
 data = [[(x[0], int(x[1:])) for x in line.split(",")] for line in data.splitlines()]
@@ -74,4 +74,4 @@ def part2(data):
 
     return pad[result] + pbd[result]
 
-print(part2(data))
+print(part1(data))
