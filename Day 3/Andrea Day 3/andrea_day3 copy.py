@@ -76,13 +76,15 @@ for i in range(len(wire_2['Direction'])): # This length is the number of movemen
 # print(wire_2) 
 
 # new stuff
-
-r = 0
 i = 0
 j = 0 
-manhattan_distances = [] # Added by August
-i_values = []
-
+z = []
+r = 0
+s = 0
+total_r = 0 
+total_s = 0 
+total_steps = 0
+list_of_lengths = []
 for j in range(len(wire_2['Position X'])-1):
     for i in range(len(wire_1['Position X'])-1):
         a = wire_2.at[j, 'Position X']
@@ -94,16 +96,19 @@ for j in range(len(wire_2['Position X'])-1):
             g = wire_2.at[j+1,'Position Y']
             if  f <= e <= g or g <= e <= f:
                 d = abs(e) + abs(a)
-                if d>0:
-                    manhattan_distances.append(d)     
-                    i_values.append(i)
+                z.append(d) 
+                if r in range(0, i+1):
+                    total_r += wire_1.at[r, 'Steps']
+                    r += 1
+                if s in range(0, j+1):
+                    total_s += wire_2.at[s, 'Steps']
+                    s += 1
+                total_steps = total_r + total_s
+                list_of_lengths.append(total_steps)
         i += 1
     j += 1
-
-
 i = 0
 j = 0 
-
 for j in range(len(wire_2['Position Y'])-1):
     for i in range(len(wire_1['Position Y'])-1):
         a = wire_2.at[j, 'Position Y']
@@ -115,14 +120,22 @@ for j in range(len(wire_2['Position Y'])-1):
             g = wire_2.at[j+1,'Position X']
             if  f <= e <= g or g <= e <= f:
                 d = abs(e) + abs(a)
-                if d>0:
-                    manhattan_distances.append(d)
-                    i_values.append(i)
+                z.append(d)
+                if r in range(0, i+1):
+                    total_r += wire_1.at[r, 'Steps']
+                    r += 1
+                if s in range(0, j+1):
+                    total_s += wire_2.at[s, 'Steps']
+                    s += 1
+                total_steps = total_r + total_s
+                list_of_lengths.append(total_steps)
         i += 1
     j += 1
+
+
+list_of_lengths.sort()
+print(list_of_lengths)
 
 # manhattan_distances.sort()
 # i_values.sort()
 
-# print(manhattan_distances)
-print(i_values)

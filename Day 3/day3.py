@@ -63,3 +63,6 @@ min_steps = min_steps_wire1 + min_steps_wire2 + 2 # Adding two to account for 0-
 
 
 print("Answer to part 2: " + str(min_steps) + " which is found at point " + str(first_cross))
+
+print(cross_positions)
+print(len(cross_positions))
