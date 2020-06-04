@@ -24,6 +24,19 @@ def part1():
         min_val = min(digits)
         total_dif += max_val - min_val
     return total_dif
-   
-print(part1())
 
+def part2():
+    total_div = 0
+    for row in input:
+        digits = row.split(' ')
+        digits = [int(i) for i in digits]
+        for digit_one in digits:
+            for digit_two in digits:
+                if digit_one % digit_two == 0 and digit_one != digit_two:
+                    total_div += digit_one/digit_two
+    return int(total_div)
+                
+        
+
+#print(part1())
+print(part2())
