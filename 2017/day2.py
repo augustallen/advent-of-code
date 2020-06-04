@@ -38,5 +38,5 @@ def part2():
                 
         
 
-#print(part1())
+print(part1())
 print(part2())
