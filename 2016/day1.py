@@ -4,7 +4,6 @@ input = [x.strip(' ') for x in input] #strip spaces
 def part1():
     x,y=0,0
     current_direction = "N"
-
     for i in input:
         if i[0] == "R" and current_direction=="N":
             current_direction = "E"
@@ -23,7 +22,7 @@ def part1():
             y += int(i[1:])
             continue
         if i[0] == "L" and current_direction=="N":
-            current_direction = "E"
+            current_direction = "W"
             x += int(i[1:])
             continue
         if i[0] == "L" and current_direction=="W":
@@ -31,8 +30,8 @@ def part1():
             y -= int(i[1:])
             continue
         if i[0]=="L" and current_direction=="S":   
-            current_direction = "W"
-            x -= int(i[1:])
+            current_direction = "E"
+            x += int(i[1:])
             continue
         if i[0]=="L" and current_direction=="E":
             current_direction = "N"
@@ -40,5 +39,65 @@ def part1():
             continue
 
     return f"The final destination is located at {x,y} which is {abs(x)+abs(y)} blocks away."
+def part2():
+    x,y=0,0
+    history = [(0,0)]
+    current_direction = "N"
+    for i in input:
+        if i[0] == "R" and current_direction=="N":
+            current_direction = "E"
+            for unit in range(int(i[1:])):
+                x += 1
+                history.append((x,y))
+            continue
+        if i[0] == "R" and current_direction=="E":
+            current_direction = "S"
+            for unit in range(int(i[1:])):
+                y -= 1
+                history.append((x,y))
+            continue
+        if i[0]=="R" and current_direction=="S":   
+            current_direction = "W"
+            for unit in range(int(i[1:])):
+                x -= 1
+                history.append((x,y))
+            continue
+        if i[0]=="R" and current_direction=="W":
+            current_direction = "N"
+            for unit in range(int(i[1:])):
+                y += 1
+                history.append((x,y))
+            continue
+        if i[0] == "L" and current_direction=="N":
+            current_direction = "W"
+            for unit in range(int(i[1:])):
+                x -= 1
+                history.append((x,y))
+            continue
+        if i[0] == "L" and current_direction=="W":
+            current_direction = "S"
+            for unit in range(int(i[1:])):
+                y -= 1
+                history.append((x,y))
+            continue
+        if i[0]=="L" and current_direction=="S":   
+            current_direction = "E"
+            for unit in range(int(i[1:])):
+                x += 1
+                history.append((x,y))
+            continue
+        if i[0]=="L" and current_direction=="E":
+            current_direction = "N"
+            for unit in range(int(i[1:])):
+                y += 1
+                history.append((x,y))
+            continue
+    my_set = set()
+    for item in history:
+        if item in my_set:
+            return f"First re-visited location is at {item} which is {abs(item[0])+abs(item[1])} blocks away."
+        else:
+            my_set.add(item)
 
 print(part1())
+print(part2())
