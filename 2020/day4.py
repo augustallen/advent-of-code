@@ -4,9 +4,7 @@ with open('2020/input_day4.txt') as f:
     lines = [l.strip() for l in f]
 
 
-
-
-def part1(lines):
+def format_passport(lines):
     passports=[]
     passport = ""
     for line in lines:
@@ -19,7 +17,18 @@ def part1(lines):
     # next two lines are for last passport only
     passport = dict(p.split(":") for p in passport.lstrip().split(" "))
     passports.append(passport)
+    return passports
 
+def part1(lines):
+    passports = format_passport(lines)
+    valid_passports = 0
+    for p in passports:
+        if p.keys() >= {"byr", "iyr", "eyr" ,"hgt", "hcl", "ecl", "pid"}:
+            valid_passports += 1
+    return valid_passports
+
+def part2(lines):
+    passports = format_passport(lines)
     valid_passports = 0
     for p in passports:
         if p.keys() >= {"byr", "iyr", "eyr" ,"hgt", "hcl", "ecl", "pid"}:
@@ -35,7 +44,4 @@ def part1(lines):
                         valid_passports += 1
     return valid_passports
 
-print(part1(lines))
-
-
-     #    m = re.search("(?P<min_count>\d+)-(?P<max_count>\d+)\s(?P<letter>\S):\s(?P<password>\S+)",l)
+print(f"Part 1: {part1(lines)}\nPart 2: {part2(lines)}")
