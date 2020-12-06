@@ -12,7 +12,7 @@ def part1(lines):
             passport = ""
         passport += " "
         passport += line
-    # next two lines are for last line only
+    # next two lines are for last passport only
     passport = dict(p.split(":") for p in passport.lstrip().split(" "))
     passports.append(passport)
 
