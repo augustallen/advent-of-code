@@ -4,3 +4,4 @@ with open('2020/input_day7.txt') as f:
 for line in lines:
     print(line)
 
+# comment
