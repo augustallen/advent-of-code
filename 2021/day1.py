@@ -18,4 +18,4 @@ def part2():
     return increases
 
 
-print(f"Part 1: {part1()} \n Part 2: {part2()}")
+print(f"Part 1: {part1()} \nPart 2: {part2()}")
