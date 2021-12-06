@@ -39,25 +39,4 @@ def part2():
     return int(oxygen_list[0], 2) * int(co2_list[0], 2)
 
 
-def part2_old():
-    modified_oxygen = [l for l in lines]
-    modified_co2 = [l for l in lines]
-
-    for digit in range(len(lines[0])):
-        a = [int(i[digit]) for i in modified_oxygen]
-        if len(a) > 1:
-            mode = round((sum(a) / len(a)) + 0.05)
-            modified_oxygen = [
-                i for i in modified_oxygen if int(i[digit]) == mode]
-
-    for digit in range(len(lines[0])):
-        a = [int(i[digit]) for i in modified_co2]
-        print(
-            f"----\nDigits: {a} \nCO2 List: {modified_co2}\nMode: {round((sum(a) / len(a)) + 0.05)}\n------")
-        if len(a) > 1:
-            mode = round((sum(a) / len(a)) + 0.05)
-            modified_co2 = [i for i in modified_co2 if int(i[digit]) != mode]
-    return int(modified_oxygen[0], 2) * int(modified_co2[0], 2)
-
-
 print(f"Part 1: {part1()} \nPart 2: {part2()}")
